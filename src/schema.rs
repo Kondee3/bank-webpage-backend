@@ -2,10 +2,11 @@
 
 diesel::table! {
     bank_users (id) {
-        id -> Int4,
-        user_name -> Varchar,
+        id -> Varchar,
+        username -> Varchar,
         email -> Varchar,
-        date_of_birth -> Nullable<Date>,
-        age -> Nullable<Int4>,
+        dateofbirth -> Varchar,
+        age -> Int4,
+        password -> Varchar,
     }
 }
