@@ -2,7 +2,7 @@ use serde::Serialize;
 
 #[derive(Serialize)]
 pub struct ResponseState {
-    state: State,
+    pub state: State,
 }
 #[derive(Serialize)]
 pub enum State {

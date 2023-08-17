@@ -1,16 +1,22 @@
-use crate::schema::bank_users::dsl::bank_users;
+use crate::schema::bank_users;
 use crate::responses::response::{State, ResponseState};
-use crate::webforms::{userformlogin::UserFormLogin, userformregister::UserFormRegister};
+use crate::webforms::{userformlogin::UserFormLogin,
+userformregister::UserFormRegister};
 use crate::models::User;
-use crate::database::database::establish_connection;
+use crate::establish_connection;
 use actix_web::{post, web::Json, Responder};
+use diesel::SelectableHelper;
 use uuid::Uuid;
+use diesel::prelude::*;
 use chrono::{Datelike, Utc};
 
 #[post("/api/v1/user/login")]
 pub async fn login_user(user_data: Json<UserFormLogin>) -> impl Responder {
+    
     let connection = &mut establish_connection();
-    let user: User = bank_users::table
+      
+    
+    let user: User = bank_users::table 
         .select(User::as_select())
         .filter(bank_users::email.eq(&user_data.email_form))
         .first(connection)  
