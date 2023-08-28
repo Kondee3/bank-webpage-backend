@@ -1,5 +1,5 @@
 use actix_web::{http, middleware::Logger};
-use hello_rocket::services::controllers::*;  
+use bank::services::controllers::*;  
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {

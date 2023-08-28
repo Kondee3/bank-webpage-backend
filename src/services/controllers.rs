@@ -14,7 +14,6 @@ use chrono::{Datelike, Utc};
 pub async fn login_user(user_data: Json<UserFormLogin>) -> impl Responder {
     
     let connection = &mut establish_connection();
-      
     
     let user: User = bank_users::table 
         .select(User::as_select())
@@ -51,7 +50,6 @@ pub async fn add_user(user_data: Json<UserFormRegister>) -> impl Responder {
     let mut query_res = ResponseState {
         state: State::EMPTY,
     };
-
     match query {
         Ok(_) => query_res.state = State::SUCCESS,
         Err(_) => query_res.state = State::DUPLICATE,
