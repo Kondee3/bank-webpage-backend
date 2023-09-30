@@ -1,5 +1,5 @@
 use actix_web::{http, middleware::Logger};
-use hello_rocket::services::controllers::*;  
+use hello_rocket::services::controllers::*;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -16,9 +16,8 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .wrap(cors)
             .wrap(Logger::new("%a %r %s %b %{Rferer}i %{User-Agent}i %T"))
-            .service(add_user)
-            .service(login_user)
-            
+            .service(register_controller::register)
+            .service(login_controller::login)
     })
     .bind(("127.0.0.1", 8080))?
     .run()
