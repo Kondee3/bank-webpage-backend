@@ -10,3 +10,19 @@ diesel::table! {
         password -> Varchar,
     }
 }
+
+diesel::table! {
+    mails (id) {
+        id -> Varchar,
+        sender_email -> Varchar,
+        receiver_email -> Varchar,
+        time_sent -> Timestamp,
+        title -> Varchar,
+        content -> Varchar,
+    }
+}
+
+diesel::allow_tables_to_appear_in_same_query!(
+    bank_users,
+    mails,
+);

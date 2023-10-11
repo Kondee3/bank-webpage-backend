@@ -3,6 +3,7 @@ pub mod schema;
 pub mod services;
 pub mod webforms; 
 pub mod responses;
+pub mod errors;
 
 use diesel::pg::PgConnection;
 use diesel::prelude::*;

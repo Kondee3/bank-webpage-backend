@@ -1,9 +1,5 @@
 use actix_web::{http, middleware::Logger};
-<<<<<<< HEAD
-use hello_rocket::services::controllers::*;
-=======
 use bank::services::controllers::*;  
->>>>>>> 2b197072586ad0bd2ecfd3c1a5abc8e6ad41be4d
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -22,6 +18,8 @@ async fn main() -> std::io::Result<()> {
             .wrap(Logger::new("%a %r %s %b %{Rferer}i %{User-Agent}i %T"))
             .service(register_controller::register)
             .service(login_controller::login)
+            .service(mail_controller::send_mail)
+            .service(mail_controller::fetch_mails)
     })
     .bind(("127.0.0.1", 8080))?
     .run()

@@ -1,12 +1,12 @@
 use crate::establish_connection;
-use crate::models::convert;
 use crate::models::*;
 use crate::responses::response::{ResponseState, State};
 use crate::schema::bank_users;
-use crate::webforms::{userformlogin::UserFormLogin, userformregister::UserFormRegister};
+use crate::webforms::userformlogin::UserFormLogin;
 use actix_web::{post, web::Json, Responder};
 use diesel::prelude::*;
 use diesel::SelectableHelper;
+
 #[post("/api/v1/user/login")]
 pub async fn login(user_data: Json<UserFormLogin>) -> impl Responder {
     let user: User = bank_users::table

@@ -1,5 +1,5 @@
 use serde::{Serialize, Deserialize};
-use chrono::NaiveDate;
+use chrono::prelude::NaiveDate;
 
 #[derive(Serialize, Deserialize)]
 pub struct UserFormRegister {
