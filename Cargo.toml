@@ -11,6 +11,8 @@ serde = {version= "1.0.164", features= ["derive"]}
 serde_json = {version = "1.0.107"}
 diesel = {version= "2.1.0", features= ["postgres", "chrono"]}
 chrono = { version = "0.4.26", features = ["serde"] }
+rand = "0.7"
+argon2 = "0.5.2"  
 actix-cors = "0.6.4"
 dotenvy = "0.15"     
 env_logger = "0.10.0"

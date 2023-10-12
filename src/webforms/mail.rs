@@ -1,8 +1,7 @@
-
-use serde::{Serialize, Deserialize};
 use chrono::prelude::NaiveDateTime;
+use serde::{Deserialize, Serialize};
 #[derive(Serialize, Deserialize)]
-pub struct MailData{
+pub struct MailData {
     pub sender_email: String,
     pub receiver_email: String,
     pub time_sent: NaiveDateTime,

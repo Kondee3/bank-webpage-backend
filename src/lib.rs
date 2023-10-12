@@ -1,16 +1,16 @@
-pub mod models;
+pub mod errors;
+pub mod responses;
 pub mod schema;
 pub mod services;
-pub mod webforms; 
-pub mod responses;
-pub mod errors;
-
+pub mod user;
+pub mod webforms;
+pub mod mail;
 use diesel::pg::PgConnection;
 use diesel::prelude::*;
 use dotenvy::dotenv;
 use std::env;
 
-pub fn establish_connection() -> PgConnection{
+pub fn establish_connection() -> PgConnection {
     dotenv().ok();
     let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
     PgConnection::establish(&database_url)

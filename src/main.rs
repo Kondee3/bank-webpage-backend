@@ -1,6 +1,6 @@
 use actix_web::{http, middleware::Logger};
-use bank::services::controllers::*;  
-
+use bank::services::controllers::*;
+use user_controllers;
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     use actix_cors::Cors;
@@ -16,10 +16,8 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .wrap(cors)
             .wrap(Logger::new("%a %r %s %b %{Rferer}i %{User-Agent}i %T"))
-            .service(register_controller::register)
-            .service(login_controller::login)
-            .service(mail_controller::send_mail)
-            .service(mail_controller::fetch_mails)
+            .configure(user_controllers::init)
+            .configure(mail_controller::init)
     })
     .bind(("127.0.0.1", 8080))?
     .run()
